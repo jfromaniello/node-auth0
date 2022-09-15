@@ -45,3 +45,5 @@ test-results.xml
 
 # npm
 package-lock.json
+
+types
