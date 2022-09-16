@@ -3,6 +3,15 @@ const utils = require('../utils');
 const { jsonToBase64, generateClientInfo } = utils;
 const { ArgumentError } = require('rest-facade');
 
+/* eslint-disable jsdoc/valid-types */
+
+/**
+ * @typedef { import("./UserTypes").AppMetadata } AppMetadata
+ * @typedef { import("./UserTypes").UserMetadata } UserMetadata
+ * @typedef { import("./UserTypes").UserData } UserData
+ * @typedef { import("./Common").ObjectWithId } ObjectWithId
+ */
+
 // Managers.
 const ClientsManager = require('./ClientsManager');
 const ClientGrantsManager = require('./ClientGrantsManager');
@@ -1081,10 +1090,10 @@ class ManagementClient {
    *   // Updated user.
    *   console.log(user);
    * });
-   * @param   {object}    params      The user data object..
-   * @param   {string}    params.id   The user id.
-   * @param   {object}    metadata    New user metadata.
-   * @param   {Function}  [cb]        Callback function
+   * @param   {ObjectWithId} params      The user data object..
+   * @param   {string}       params.id   The user id.
+   * @param   {AppMetadata}  metadata    New user metadata.
+   * @param   {Function}     [cb]        Callback function
    * @returns  {Promise|undefined}
    */
   updateUserMetadata(...args) {
@@ -1108,10 +1117,10 @@ class ManagementClient {
    *   // Updated user.
    *   console.log(user);
    * });
-   * @param   {object}    params      The user data object..
-   * @param   {string}    params.id   The user id.
-   * @param   {object}    metadata    New app metadata.
-   * @param   {Function}  [cb]        Callback function
+   * @param   {ObjectWithId}   params    The user data object..
+   * @param   {string}         params.id The user id.
+   * @param   {AppMetadata}    metadata  New app metadata.
+   * @param   {Function}       [cb]      Callback function
    * @returns  {Promise|undefined}
    */
   updateAppMetadata(...args) {

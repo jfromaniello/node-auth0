@@ -15,7 +15,7 @@
     "jsdoc:generate": "jsdoc --configure .jsdoc.json --verbose",
     "precommit": "pretty-quick --staged",
     "lint": "eslint .",
-    "prepare": "tsc"
+    "prepare": "rm -rf types ; mkdir types ; tsc ; pushd src ; find . -name '*.d.ts' -exec rsync -R {} ../types/ \\; ; popd"
   },
   "repository": {
     "type": "git",
