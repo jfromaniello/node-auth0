@@ -947,7 +947,7 @@ class ManagementClient {
    * @param   {number}    [params.per_page]      Number of results per page.
    * @param   {number}    [params.page]          Page number, zero indexed.
    * @param   {Function}  [cb]                   Callback function.
-   * @returns  {Promise|undefined}
+   * @returns  {Promise<UserData[]>}
    */
   getUsers(...args) {
     return this.users.getAll(...args);
@@ -985,7 +985,7 @@ class ManagementClient {
    * @param   {object}    data      The user data object.
    * @param   {string}    data.id   The user id.
    * @param   {Function}  [cb]      Callback function.
-   * @returns  {Promise|undefined}
+   * @returns  {Promise<UserData>}
    */
   getUser(...args) {
     return this.users.get(...args);
