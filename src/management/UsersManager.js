@@ -3,6 +3,15 @@ const Auth0RestClient = require('../Auth0RestClient');
 const RetryRestClient = require('../RetryRestClient');
 const { sanitizeArguments } = require('../utils');
 
+/* eslint-disable jsdoc/valid-types */
+
+/**
+ * @typedef { import("./UserTypes").AppMetadata } AppMetadata
+ * @typedef { import("./UserTypes").UserMetadata } UserMetadata
+ * @typedef { import("./UserTypes").UserData } UserData
+ * @typedef { import("./Common").ObjectWithId } ObjectWithId
+ */
+
 /**
  * Abstracts interaction with the users endpoint.
  */
@@ -208,7 +217,7 @@ class UsersManager {
    * @param   {number}    [params.per_page] Number of results per page.
    * @param   {number}    [params.page]     Page number, zero indexed.
    * @param   {Function}  [cb]              Callback function.
-   * @returns  {Promise|undefined}
+   * @returns  {Promise<UserData[]>}
    */
   getAll(...args) {
     return this.users.getAll(...args);
@@ -248,7 +257,7 @@ class UsersManager {
    * @param   {object}    data      The user data object.
    * @param   {string}    data.id   The user id.
    * @param   {Function}  [cb]      Callback function.
-   * @returns  {Promise|undefined}
+   * @returns  {Promise<UserData>}
    */
   get(...args) {
     return this.users.get(...args);
@@ -270,7 +279,7 @@ class UsersManager {
    * });
    * @param   {object}    params      The user parameters.
    * @param   {string}    params.id   The user id.
-   * @param   {object}    data        New user data.
+   * @param   {UserData}  data        New user data.
    * @param   {Function}  [cb]        Callback function
    * @returns  {Promise|undefined}
    */
@@ -295,11 +304,11 @@ class UsersManager {
    *   // Updated user.
    *   console.log(user);
    * });
-   * @param   {object}    params      The user data object..
-   * @param   {string}    params.id   The user id.
-   * @param   {object}    metadata    New user metadata.
-   * @param   {Function}  [cb]        Callback function
-   * @returns  {Promise|undefined}
+   * @param   {object}        params      The user data object..
+   * @param   {string}        params.id   The user id.
+   * @param   {UserMetadata}  metadata    New user metadata.
+   * @param   {Function}      [cb]        Callback function
+   * @returns {Promise|undefined}
    */
   updateUserMetadata(params, metadata, cb) {
     const data = {
@@ -330,10 +339,10 @@ class UsersManager {
    *   // Updated user.
    *   console.log(user);
    * });
-   * @param   {object}    params      The user data object..
-   * @param   {string}    params.id   The user id.
-   * @param   {object}    metadata    New app metadata.
-   * @param   {Function}  [cb]        Callback function
+   * @param   {object}      params      The user data object..
+   * @param   {string}      params.id   The user id.
+   * @param   {AppMetadata} metadata    New app metadata.
+   * @param   {Function}    [cb]        Callback function
    * @returns  {Promise|undefined}
    */
   updateAppMetadata(params, metadata, cb) {
